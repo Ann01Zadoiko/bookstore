@@ -13,7 +13,6 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
- //   @Column(name = "AUTHOR")
 //    @AttributeOverride({
 //            @AttributeOverride(name = "name", column = @Column(name = "author name")),
 //            @AttributeOverride(name = "surname", column = @Column(name = "author surname"))

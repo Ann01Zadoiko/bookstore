@@ -5,7 +5,7 @@ import com.zadoiko.bookstore.model.Book;
 import java.util.Optional;
 
 public interface BookServices {
-    
+
     public Book addBook(Book book);
     public void updateBook(Book book);
     boolean removeBook(Long id);

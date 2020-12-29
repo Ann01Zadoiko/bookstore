@@ -10,6 +10,5 @@ import javax.persistence.Embeddable;
 public class Author {
     @Column(length = 32)
     String name;
-
     String surname;
 }

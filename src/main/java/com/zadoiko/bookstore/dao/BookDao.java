@@ -7,6 +7,7 @@ import java.util.List;
 
 @Repository
 public interface BookDao {
+
     public void addBook(Book book);
     public void updateBook(Book book);
     boolean removeBook(Long id);

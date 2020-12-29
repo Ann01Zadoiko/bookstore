@@ -11,7 +11,6 @@ public interface BookRepository extends CrudRepository<Book, Long> {
     @Override
     Optional<Book> findById (Long along);
 
-
     Iterable<Book> findBookByTitleLike(String title);
 
 }

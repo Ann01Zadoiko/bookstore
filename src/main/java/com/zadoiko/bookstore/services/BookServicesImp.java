@@ -1,25 +1,23 @@
 package com.zadoiko.bookstore.services;
 
-import com.zadoiko.bookstore.dao.BookDao;
+
 import com.zadoiko.bookstore.dao.BookRepository;
 import com.zadoiko.bookstore.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 import java.util.Optional;
 
 @Service
 public class BookServicesImp implements BookServices {
 
-    private BookDao bookDao;
     @Autowired
     private BookRepository bookRepository;
 
     @Autowired
-    public void setBookDao(com.zadoiko.bookstore.dao.BookDao bookDao) {
-        bookDao = bookDao;
+    public void setBookDao(BookRepository bookRepository) {
+        bookRepository = this.bookRepository;
     }
 
     @Override
@@ -32,13 +30,13 @@ public class BookServicesImp implements BookServices {
     @Override
    // @Transactional
     public void updateBook(Book book) {
-        bookDao.updateBook(book);
+        bookRepository.delete(book);
     }
 
     @Override
    // @Transactional
-    public boolean removeBook(Long id) {
-        return bookDao.removeBook(id);
+    public void removeBook(Long id) {
+        bookRepository.deleteById(id);
     }
 
     @Override

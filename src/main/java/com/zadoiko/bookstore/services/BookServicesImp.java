@@ -1,6 +1,5 @@
 package com.zadoiko.bookstore.services;
 
-import com.zadoiko.bookstore.dao.BookDao;
 import com.zadoiko.bookstore.dao.BookRepository;
 import com.zadoiko.bookstore.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +12,13 @@ import java.util.Optional;
 @Service
 public class BookServicesImp implements BookServices {
 
-    private BookDao bookDao;
+
+
     @Autowired
     private BookRepository bookRepository;
 
     @Autowired
-    public void setBookDao(com.zadoiko.bookstore.dao.BookDao bookDao) {
+    public void setBookDao(com.zadoiko.bookstore.dao.BookRepository bookDao) {
         bookDao = bookDao;
     }
 
@@ -32,14 +32,9 @@ public class BookServicesImp implements BookServices {
     @Override
    // @Transactional
     public void updateBook(Book book) {
-        bookDao.updateBook(book);
+        bookRepository.delete(book);
     }
 
-    @Override
-   // @Transactional
-    public boolean removeBook(Long id) {
-        return bookDao.removeBook(id);
-    }
 
     @Override
    @Transactional
@@ -56,6 +51,11 @@ public class BookServicesImp implements BookServices {
     @Override
     public Iterable<Book> searchByTitle(String search) {
         return bookRepository.findBookByTitleLike("%" + search + "%");
+    }
+
+    @Override
+    public List<Book> findBookByIdIn(List<Long> Ids) {
+        return bookRepository.findBookByIdIn(Ids);
     }
 
 }
